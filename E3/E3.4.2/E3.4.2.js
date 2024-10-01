@@ -5,48 +5,57 @@
 */
 
 
-console.log(`${simpleNumber(null)}`);
-console.log(`${simpleNumber(NaN)}`);
-console.log(`${simpleNumber(undefined)}`);
-console.log(`${simpleNumber('str')}`);
-console.log(`${simpleNumber(-5)}`);
-console.log(`${simpleNumber(0)}`);
-console.log(`${simpleNumber(1)}`);
-console.log(`${simpleNumber(1010)}`);
-console.log(`${simpleNumber(1000)}`);
-console.log(`${simpleNumber(999)}`);
-console.log(`${simpleNumber(7)}`);
-console.log(`${simpleNumber(3)}`);
-console.log(`${simpleNumber(Infinity)}`);
+simpleNumber(null);
+simpleNumber(NaN);
+simpleNumber(undefined);
+simpleNumber('str');
+simpleNumber(-5);
+simpleNumber(0);
+simpleNumber(1);
+simpleNumber(1010);
+simpleNumber(1000);
+simpleNumber(999);
+simpleNumber(7);
+simpleNumber(3);
+simpleNumber(Infinity);
+simpleNumber(0.9);
+simpleNumber(-0.5);
 
 function simpleNumber(input) {
-    console.log(input, typeof input);
-    if (typeof input != 'number') {
-        return `${input} is invalid input`
-    } else {
-        numInput = +input;
-        if (isNaN(numInput)) {
-            return 'Can\'t process NaN'
-        } else {
-            if (numInput <= 0) {
-                return 'Less or equal zero'
-            } else if (numInput == 1) {
-                return 'It\'s a simple number, because it\'s 1'
-            } else if (numInput > 1000) {
-                return 'Too much'
-            } else {
-                let arr = [];
-                for (let i = 1; i <= numInput; i++) {
-                    if (numInput % i == 0) {
-                        arr.push(numInput);
-                    };
+    let invalidTypes = [
+        NaN,
+        Infinity,
+        -Infinity,
+        undefined
+    ];
+
+    if (
+        typeof(input) == 'number'
+        && !invalidTypes.includes(input)
+    ) {
+        if (input > 1000) {
+            console.log(`Число ${input} больше тысячи`);
+        }
+        else if (input < 1) {
+            console.log(`Число ${input} не является простым`);
+        }
+        else {
+            // проверяем до квадратного корня - дальше нет смысла
+            let divider = 2;
+            const limit = Math.sqrt(input);
+
+            while (divider <= limit) {
+                if (input % divider === 0) {
+                    console.log(`Число ${input} не является простым`);
+                    return;
                 };
-                if (arr.length == 2) {
-                    return `${input} is a simple number`
-                } else {
-                    return `${input} is not a simple number`
-                };
+                ++divider;
             };
+            
+            console.log(`Число ${input} является простым`);
         };
+    }
+    else {
+        console.log(`Неверный аргумент функции: ${input}`);
     };
 };

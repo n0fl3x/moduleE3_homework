@@ -6,18 +6,6 @@
 */
 
 
-const powerFunc = (x, n) => {
-    if (typeof(x) != "number") {
-        return "Invalid type of parameter base";
-    };
-
-    if (typeof(n) != "number") {
-        return "Invalid type of parameter power";
-    };
-
-    return x ** n;
-};
-
 console.log(powerFunc(2, 4));
 console.log(powerFunc("4", 4));
 console.log(powerFunc(2, "3"));
@@ -31,3 +19,15 @@ console.log(powerFunc(0, -1));
 console.log(powerFunc(NaN, NaN));
 console.log(powerFunc(-4, 0,5));
 console.log(powerFunc(-16, -0,5));
+
+const powerFunc = (x, n) => {
+    if (typeof(x) != "number") {
+        return "Invalid type of parameter base";
+    };
+
+    if (typeof(n) != "number") {
+        return "Invalid type of parameter power";
+    };
+
+    return x ** n;
+};

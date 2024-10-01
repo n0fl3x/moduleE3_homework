@@ -7,12 +7,11 @@
 
 function getSumFunction(a) {
     return function(b) {
-        return a + b
-    }
+        return a + b;
+    };
 };
 
-const sumFunction = getSumFunction(2);
-
-const sum = sumFunction(3)
+let sumFunction = getSumFunction(2);
+let sum = sumFunction(3);
 
 console.log(sum);
